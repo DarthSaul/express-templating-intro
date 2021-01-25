@@ -9,7 +9,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 
 app.get('/', (req, res) => {
-    res.render(`home`);
+    res.render(`home`, { name: 'Home Page' });
 });
 
 app.get('/r/:subreddit', (req, res) => {
@@ -17,7 +17,7 @@ app.get('/r/:subreddit', (req, res) => {
     const data = redditData[subreddit];
     return data 
         ? res.render('subreddit', { ...data }) 
-        : res.render('notfound', { subreddit });
+        : res.render('notfound', { subreddit, name: 'Home Page' });
 });
 
 app.listen(8080, () => {

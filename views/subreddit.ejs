@@ -1,33 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('partials/head')%>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>r/<%= name %></title>
-    <link rel="stylesheet" href="/styles.css">
-</head>
+<%- include('partials/navbar')%>
 
-<body>
+<div class="container mt-5">
+<h1>Welcome to r/<%= name %></h1>
+<h2><%= subscribers %> subscribers</h2>
+<p><i><%= description %></i></p>
+<hr>
 
-    <a href="http://localhost:8080">Home</a>
-
-    <h1>Welcome to r/<%= name %></h1>
-    <h2><%= subscribers %> subscribers</h2>
-    <p><i><%= description %></i></p>
-    <hr>
-
-    <% for (let post of posts) { %>
-        <article>
-            <p><b><%= post.title %></b> -- u/<%= post.author %></p>
-            <% if (post.img) { %>
-                <img src="<%=post.img%>" alt="">
-            <% } %> 
-        </article>
+<% for (let post of posts) { %>
+<article>
+    <p><b><%= post.title %></b> -- u/<%= post.author %></p>
+    <% if (post.img) { %>
+    <img src="<%=post.img%>" alt="">
     <% } %>
+</article>
+<% } %>
 
-    
+</div>
 
-</body>
-
-</html>
+<%- include('partials/footer')%> 
