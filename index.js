@@ -1,12 +1,22 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 
-// Test connection
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '/views'));
+
+
 app.get('/', (req, res) => {
-    res.send(`<h1>Hello!</h1>`);
+    res.render(`home`);
 });
 
-// Connect to port 8080
+app.get('/r/:subreddit', (req, res) => {
+    const { subreddit } = req.params;
+    const cities = ['New York City', 'Pittsburgh', 'Madrid', 'Tamarindo'];
+    res.render('subreddit', { subreddit, cities });
+});
+
+
 app.listen(8080, () => {
     console.log('LISTENING ON PORT 8080');
 });
